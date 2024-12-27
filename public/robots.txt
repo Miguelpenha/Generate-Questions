@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://generate-questions-test.vercel.app/sitemap.xml

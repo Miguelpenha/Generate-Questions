@@ -6,7 +6,7 @@ export const Container = styled.form`
     padding: 2em;
     display: flex;
     max-width: 25em;
-    margin-top: 8em;
+    margin-top: 5em;
     align-self: center;
     border-radius: 8px;
     box-shadow: #02AFEF 0px 2px 8px 1px;

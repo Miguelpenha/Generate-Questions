@@ -1,13 +1,17 @@
+import { useState } from 'react'
 import Head from '../components/Head'
-import { Container, Docx } from '../styles/pages'
+import { Container } from '../styles/pages'
 import Form from '../components/Form'
+import Docx from '../components/Docx'
 
 function Home() {
+    const [data, setData] = useState<ArrayBuffer>()
+
     return <>
         <Head/>
         <Container>
-            <Form/>
-            <Docx id="docx"/>
+            <Form setData={setData}/>
+            <Docx data={data}/>
         </Container>
     </>
 }

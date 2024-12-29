@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { IRequestQuestions } from '../../pages/api/questions'
 import api from '../../services/api'
 import { renderAsync } from 'docx-preview'
 
-function onQuestions() {
+function onQuestions(setData: Dispatch<SetStateAction<ArrayBuffer>>) {
     const [loading, setLoading] = useState(false)
-
+    
     async function onSubmit(fields: IRequestQuestions) {
         setLoading(true)
         
@@ -14,12 +14,16 @@ function onQuestions() {
         })
 
         setLoading(false)
+
+        setData(data)
     
-        const container = document.getElementById('docx')
+        setTimeout(async () => {
+            const container = document.getElementById('docx')
     
-        if (container) {
-            await renderAsync(data, container)
-        }
+            if (container) {
+                await renderAsync(data, container, null, { ignoreWidth: true, inWrapper: false })
+            }
+        }, 100)
     }
 
     return { onSubmit, loading }
